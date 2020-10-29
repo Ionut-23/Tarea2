@@ -1,0 +1,25 @@
+public class Camarero extends Thread {
+
+    @Override
+    public void run() {
+        while (Main.list.isEmpty()) {
+            try {
+                prepararComanda();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void prepararComanda() throws InterruptedException {
+        System.out.println("Camarero - Debo llevarle comida al cliente");
+        Main.list.add("Zumo");
+        sleep(1000);
+        Main.list.add("Tostada");
+        sleep(1000);
+        Main.list.add("Mermelada");
+        sleep(1000);
+        System.out.println("Camarero - El pedido ya esta listo. Tardo 5 segundos en llevarle la comida al cliente");
+        sleep(5000);
+    }
+}
